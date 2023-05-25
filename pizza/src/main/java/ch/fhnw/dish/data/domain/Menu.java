@@ -1,4 +1,4 @@
-package ch.fhnw.pizza.data.domain;
+package ch.fhnw.dish.data.domain;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class Menu {
     private Long id;
 
     @OneToMany(mappedBy = "menu")
-    private List<Pizza> pizzaList;
+    private List<Dish> dishList;
 
     private String currentOffer;
 
@@ -28,12 +28,12 @@ public class Menu {
         this.id = id;
     }
 
-    public List<Pizza> getPizzaList() {
-        return pizzaList;
+    public List<Dish> getDishList() {
+        return dishList;
     }
 
-    public void setPizzaList(List<Pizza> pizzaList) {
-        this.pizzaList = pizzaList;
+    public void setDishList(List<Dish> dishList) {
+        this.dishList = dishList;
     }
 
     public String getCurrentOffer() {
@@ -43,7 +43,7 @@ public class Menu {
     public void setCurrentOffer(String currentOffer) {
         this.currentOffer = currentOffer;
     }
-
     
+    // Additional methods, constructors, getters, and setters can be added as per your requirements
     
 }

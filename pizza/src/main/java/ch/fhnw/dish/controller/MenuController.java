@@ -1,8 +1,8 @@
-package ch.fhnw.pizza.controller;
+package ch.fhnw.dish.controller;
 
-import ch.fhnw.pizza.business.service.MenuService;
-import ch.fhnw.pizza.data.domain.Menu;
-import ch.fhnw.pizza.data.domain.Pizza;
+import ch.fhnw.dish.data.domain.Menu;
+import ch.fhnw.dish.business.service.MenuService;
+import ch.fhnw.dish.data.domain.Dish;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,40 +20,35 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
-    @GetMapping(path="/pizza/{id}", produces = "application/json")
-    public ResponseEntity getPizza(@PathVariable("id") Long id) {
+    @GetMapping(path="/dish/{id}", produces = "application/json")
+    public ResponseEntity getDish(@PathVariable("id") Long id) {
         try{
-            Pizza pizza = menuService.findPizzaById(id);
-            return ResponseEntity.ok(pizza);
+            Dish dish = menuService.findDishById(id);
+            return ResponseEntity.ok(dish);
         }
         catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
 
-    @GetMapping(path="/pizza", produces = "application/json")
-    public List<Pizza> getPizzaList() {
-        List<Pizza> pizzaList = menuService.getAllPizzas();
-
-        return pizzaList;
+    @GetMapping(path="/dish", produces = "application/json")
+    public List<Dish> getDishList() {
+        List<Dish> dishList = menuService.getAllDishes();
+        return dishList;
     }
 
-    @PostMapping(path="/pizza", consumes="application/json", produces = "application/json")
-    public ResponseEntity addPizza(@RequestBody Pizza pizza) {
+    @PostMapping(path="/dish", consumes="application/json", produces = "application/json")
+    public ResponseEntity addDish(@RequestBody Dish dish) {
         try{
-            pizza = menuService.addPizza(pizza);
-            
+            dish = menuService.addDish(dish);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
-
         }
-        return ResponseEntity.ok(pizza);
-        
+        return ResponseEntity.ok(dish);
     }
 
     @GetMapping(path="", produces = "application/json")
     public Menu getMenu(@RequestParam(value="location") String location) {
-
         return menuService.getMenuByLocation(location);
     }
     
