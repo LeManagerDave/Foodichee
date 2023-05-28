@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ch.fhnw.dish.business.service.MenuService;
 import ch.fhnw.dish.data.domain.Dish;
+import ch.fhnw.dish.data.domain.Drink;
 import jakarta.annotation.PostConstruct;
 
 @SpringBootApplication
@@ -40,6 +41,16 @@ public class DishApplication {
         dish.setDishName("Riz Casimir");
         dish.setDishIngredients("Rice, Chicken, Pineapple, Apple, Curry, Cream, Onion, Garlic");
         menuService.addDish(dish);
+
+        Drink drink = new Drink();
+        drink.setDrinkName("Coca-Cola");
+        drink.setDrinkType("Soda");
+        menuService.addDrink(drink);
+
+        drink = new Drink();
+        drink.setDrinkName("Orange Juice");
+        drink.setDrinkType("Juice");
+        menuService.addDrink(drink);
     }
 
 }
