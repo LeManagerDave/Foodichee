@@ -18,6 +18,9 @@ public class Menu {
     @OneToMany(mappedBy = "menu")
     private List<Dish> dishList;
 
+    @OneToMany(mappedBy = "menu")
+    private List<Drink> drinkList;
+
     private String currentOffer;
 
     public Long getId() {
@@ -34,6 +37,14 @@ public class Menu {
 
     public void setDishList(List<Dish> dishList) {
         this.dishList = dishList;
+    }
+
+    public List<Drink> getDrinkList() {
+        return drinkList;
+    }
+
+    public void setDrinkList(List<Drink> drinkList) {
+        this.drinkList = drinkList;
     }
 
     public String getCurrentOffer() {
