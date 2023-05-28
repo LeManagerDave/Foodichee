@@ -11,16 +11,21 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Menu {
 
+
+    // Primary key for menu entity, the @JsonIgnore annotation excludes this field from the JSON representation of the entity
     @Id
-    @JsonIgnore
+    @JsonIgnore 
     private Long id;
 
-    @OneToMany(mappedBy = "menu")
+    // One-to-many relationship with the Dish entity
+    @OneToMany(mappedBy = "menu") 
     private List<Dish> dishList;
 
+    // One-to-many relationship with the Drink entity
     @OneToMany(mappedBy = "menu")
     private List<Drink> drinkList;
 
+    // Constructors, getters, and setters
     private String currentOffer;
 
     public Long getId() {
@@ -54,7 +59,5 @@ public class Menu {
     public void setCurrentOffer(String currentOffer) {
         this.currentOffer = currentOffer;
     }
-    
-    // Additional methods, constructors, getters, and setters can be added as per your requirements
     
 }

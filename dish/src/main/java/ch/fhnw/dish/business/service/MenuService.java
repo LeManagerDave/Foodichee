@@ -1,13 +1,16 @@
 package ch.fhnw.dish.business.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ch.fhnw.dish.data.domain.Menu;
 import ch.fhnw.dish.data.domain.Dish;
+import ch.fhnw.dish.data.domain.Drink;
 import ch.fhnw.dish.data.repository.DishRepository;
+import ch.fhnw.dish.data.repository.DrinkRepository;
 
 @Service
 public class MenuService {
@@ -15,8 +18,11 @@ public class MenuService {
     @Autowired
     private DishRepository dishRepository;
 
+    @Autowired
+    private DrinkRepository drinkRepository;
+
     public Dish findDishById(Long id) {
-        Dish dish = dishRepository.findById(id).get();
+        Dish dish = dishRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Dish not found"));
         return dish;
     }
 
@@ -34,26 +40,46 @@ public class MenuService {
         throw new Exception("Invalid dish name ");
     }
 
+    public Drink findDrinkById(Long id) {
+        Drink drink = drinkRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Drink not found"));
+        return drink;
+    }
+
+    public List<Drink> getAllDrinks() {
+        List<Drink> drinkList = drinkRepository.findAll();
+        return drinkList;
+    }
+
+    public Drink addDrink(Drink drink) throws Exception {
+        if (drink.getDrinkName() != null) {
+            if (drinkRepository.findByDrinkName(drink.getDrinkName()) == null)
+                return drinkRepository.save(drink);
+            throw new Exception("Drink " + drink.getDrinkName() + " already exists");
+        }
+        throw new Exception("Invalid drink name ");
+    }
+
     // Business Logic to get current offer according to the location of the user requesting the menu
     private String getCurrentOffer(String location) {
         String currentOffer = "No special offer";
         if ("Basel".equalsIgnoreCase(location))
-            currentOffer = "10% off on all large dishes!!!";
+            currentOffer = "10% off on all large dishes and drinks!!!";
         else if ("Brugg".equalsIgnoreCase(location))
-            currentOffer = "Two for the price of One on all small dishes!!!";
+            currentOffer = "Two for the price of One on all small dishes and drinks!!!";
         return currentOffer;
     }
 
     public Menu getMenuByLocation(String location) {
         String currentOffer = getCurrentOffer(location);
         List<Dish> dishList = getAllDishes();
+        List<Drink> drinkList = getAllDrinks();
         Menu menu = new Menu();
         menu.setDishList(dishList);
+        menu.setDrinkList(drinkList);
         menu.setCurrentOffer(currentOffer);
         return menu;
     }
 
-    // Additional methods, if needed
-
 }
+
 

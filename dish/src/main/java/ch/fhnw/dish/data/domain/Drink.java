@@ -12,22 +12,28 @@ import jakarta.persistence.Table;
 @Table(name = "drink")
 public class Drink {
 
+
+    // Represents the unique ID of the drink, e.g. "1", "2", "3", etc.
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
+
+    // Represents the name of the drink, e.g. "Coke", "Fanta", "Beer", etc.
     @Column(name = "drink_name")
     private String drinkName;
 
+
+    // Represents the type of the drink, e.g. "Beer", "Wine", "Soft Drink", etc.
     @Column(name = "drink_type")
     private String drinkType;
 
+    // Many-to-one relationship with the Menu entity
     @ManyToOne
     private Menu menu;
 
     // Constructors, getters, and setters
-
     public Long getId() {
         return id;
     }

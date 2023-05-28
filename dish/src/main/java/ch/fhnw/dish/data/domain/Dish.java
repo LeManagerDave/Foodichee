@@ -12,20 +12,29 @@ import jakarta.persistence.Table;
 @Table(name = "dish")
 public class Dish {
 
+
+    // Represents the unique ID of the dish, e.g. "1", "2", "3", etc.
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
+
+    // Represents the ingredients of the dish, e.g. "Tomato", "Cheese", "Pasta", etc.
     @Column(name = "dish_ingredients")
     private String dishIngredients;
 
+
+    // Represents the name of the dish, e.g. "Pizza", "Pasta", "Salad", etc.
     @Column(name = "dish_name")
     private String dishName;
 
+
+    // Many-to-one relationship with the Menu entity
     @ManyToOne
     private Menu menu;
 
+    // Constructors, getters, and setters
     public Long getId() {
         return id;
     }
@@ -49,8 +58,6 @@ public class Dish {
     public void setDishName(String dishName) {
         this.dishName = dishName;
     } 
-    
-    // Additional methods, constructors, getters, and setters can be added as per your requirements
     
 }
 

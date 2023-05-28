@@ -3,6 +3,7 @@ package ch.fhnw.dish.controller;
 import ch.fhnw.dish.data.domain.Menu;
 import ch.fhnw.dish.business.service.MenuService;
 import ch.fhnw.dish.data.domain.Dish;
+import ch.fhnw.dish.data.domain.Drink;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,6 +46,33 @@ public class MenuController {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
         }
         return ResponseEntity.ok(dish);
+    }
+    
+    @GetMapping(path="/drink/{id}", produces = "application/json")
+    public ResponseEntity getDrink(@PathVariable("id") Long id) {
+        try{
+            Drink drink = menuService.findDrinkById(id);
+            return ResponseEntity.ok(drink);
+        }
+        catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
+
+    @GetMapping(path="/drink", produces = "application/json")
+    public List<Drink> getDrinkList() {
+        List<Drink> drinkList = menuService.getAllDrinks();
+        return drinkList;
+    }
+
+    @PostMapping(path="/drink", consumes="application/json", produces = "application/json")
+    public ResponseEntity addDrink(@RequestBody Drink drink) {
+        try{
+            drink = menuService.addDrink(drink);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+        }
+        return ResponseEntity.ok(drink);
     }
 
     @GetMapping(path="", produces = "application/json")
