@@ -58,11 +58,4 @@ public class Drink {
         this.drinkType = drinkType;
     }
 
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
 }
