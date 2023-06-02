@@ -31,7 +31,7 @@ public class Dish {
 
     // Represents the price of the dish, e.g. "10", "15", "20", etc.
     @Column(name = "dish_price")
-    private double dishPrice;
+    private Float dishPrice;
 
 
     // Many-to-one relationship with the Menu entity
@@ -63,11 +63,11 @@ public class Dish {
         this.dishName = dishName;
     } 
 
-    public double getDishPrice() {
+    public Float getDishPrice() {
         return dishPrice;
     }
 
-    public void setDishPrice(double dishPrice) {
+    public void setDishPrice(Float dishPrice) {
         this.dishPrice = dishPrice;
     } 
     
