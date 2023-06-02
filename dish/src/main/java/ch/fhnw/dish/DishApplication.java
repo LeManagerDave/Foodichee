@@ -35,21 +35,25 @@ public class DishApplication {
         Dish dish = new Dish();
         dish.setDishName("Spaghetti Bolognese");
         dish.setDishIngredients("Spaghetti, Tomato sauce, Minced Beef, Basil, Parmesan, Onion, Garlic");
+        dish.setDishPrice(15);
         menuService.addDish(dish);
 
         dish = new Dish();
         dish.setDishName("Riz Casimir");
         dish.setDishIngredients("Rice, Chicken, Pineapple, Apple, Curry, Cream, Onion, Garlic");
+        dish.setDishPrice(18);
         menuService.addDish(dish);
 
         Drink drink = new Drink();
         drink.setDrinkName("Coca-Cola");
         drink.setDrinkType("Soda");
+        drink.setDrinkPrice(4.50);
         menuService.addDrink(drink);
 
         drink = new Drink();
         drink.setDrinkName("Orange Juice");
         drink.setDrinkType("Juice");
+        drink.setDrinkPrice(4.00);
         menuService.addDrink(drink);
     }
 

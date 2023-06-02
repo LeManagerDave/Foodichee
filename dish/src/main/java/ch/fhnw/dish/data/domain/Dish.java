@@ -29,6 +29,10 @@ public class Dish {
     @Column(name = "dish_name")
     private String dishName;
 
+    // Represents the price of the dish, e.g. "10", "15", "20", etc.
+    @Column(name = "dish_price")
+    private double dishPrice;
+
 
     // Many-to-one relationship with the Menu entity
     @ManyToOne
@@ -57,6 +61,14 @@ public class Dish {
 
     public void setDishName(String dishName) {
         this.dishName = dishName;
+    } 
+
+    public double getDishPrice() {
+        return dishPrice;
+    }
+
+    public void setDishPrice(double dishPrice) {
+        this.dishPrice = dishPrice;
     } 
     
 }

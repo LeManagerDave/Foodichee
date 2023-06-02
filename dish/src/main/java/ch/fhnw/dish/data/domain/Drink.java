@@ -29,6 +29,10 @@ public class Drink {
     @Column(name = "drink_type")
     private String drinkType;
 
+    // Represents the price of the drink, e.g. "10", "15", "20", etc.
+    @Column(name = "drink_price")
+    private double drinkPrice;
+
     // Many-to-one relationship with the Menu entity
     @ManyToOne
     private Menu menu;
@@ -57,5 +61,13 @@ public class Drink {
     public void setDrinkType(String drinkType) {
         this.drinkType = drinkType;
     }
+
+    public double getDrinkPrice() {
+        return drinkPrice;
+    }
+
+    public void setDrinkPrice(double drinkPrice) {
+        this.drinkPrice = drinkPrice;
+    } 
 
 }
