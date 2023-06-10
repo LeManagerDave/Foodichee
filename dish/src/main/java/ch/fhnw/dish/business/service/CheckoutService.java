@@ -34,17 +34,23 @@ public class CheckoutService {
         return totalPrice;
     }
 
+    /*The processPayment method calls the processPayment method of the PaymentService, 
+    passing the total price and the selected payment method. */
     public void processPayment(String paymentMethod) {
         double totalPrice = calculateTotalPrice();
         paymentService.processPayment(totalPrice, paymentMethod);
     }
 
+    /*The processDelivery method calls the processDelivery method of the DeliveryService, 
+    passing the list of dishes, list of drinks, and the delivery address. */
     public void processDelivery(String deliveryAddress) {
         List<Dish> dishes = shoppingCartService.getDishes();
         List<Drink> drinks = shoppingCartService.getDrinks();
         deliveryService.processDelivery(dishes, drinks, deliveryAddress);
     }
 
+    /*The checkout method coordinates the entire checkout process. It calls the processPayment method, 
+    followed by the processDelivery method, and finally clears the shopping cart using the clearCart method of the ShoppingCartService. */
     public void checkout(String paymentMethod, String deliveryAddress) {
         processPayment(paymentMethod);
         processDelivery(deliveryAddress);
