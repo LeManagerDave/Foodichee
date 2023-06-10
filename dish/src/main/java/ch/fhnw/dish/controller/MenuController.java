@@ -1,5 +1,4 @@
 package ch.fhnw.dish.controller;
-//teste 
 import ch.fhnw.dish.data.domain.Menu;
 import ch.fhnw.dish.business.service.MenuService;
 import ch.fhnw.dish.data.domain.Dish;
@@ -78,6 +77,26 @@ public class MenuController {
     @GetMapping(path="", produces = "application/json")
     public Menu getMenu(@RequestParam(value="location") String location) {
         return menuService.getMenuByLocation(location);
+    }
+
+    @DeleteMapping(path = "/dish/{id}", produces = "application/json")
+    public ResponseEntity deleteDish(@PathVariable("id") Long id) {
+        try {
+            menuService.deleteDishById(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
+    }
+
+    @DeleteMapping(path = "/drink/{id}", produces = "application/json")
+    public ResponseEntity deleteDrink(@PathVariable("id") Long id) {
+        try {
+            menuService.deleteDrinkById(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
     
 }
