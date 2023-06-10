@@ -82,7 +82,7 @@ public class MenuController {
     @DeleteMapping(path = "/dish/{id}", produces = "application/json")
     public ResponseEntity deleteDish(@PathVariable("id") Long id) {
         try {
-            menuService.deleteDishById(id);
+            menuService.deleteDish(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
@@ -92,7 +92,7 @@ public class MenuController {
     @DeleteMapping(path = "/drink/{id}", produces = "application/json")
     public ResponseEntity deleteDrink(@PathVariable("id") Long id) {
         try {
-            menuService.deleteDrinkById(id);
+            menuService.deleteDrink(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
