@@ -16,6 +16,8 @@ public class CheckoutService {
         this.deliveryService = deliveryService;
     }
 
+    /* The calculateTotalPrice method calculates the total price of the items in 
+    the shopping cart by iterating over the list of dishes and drinks and summing up their prices. */
     public double calculateTotalPrice() {
         double totalPrice = 0.0;
         List<Dish> dishes = shoppingCartService.getDishes();
