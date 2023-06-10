@@ -15,18 +15,22 @@ public class ShoppingCartService {
         this.drinks = new ArrayList<>();
     }
 
+    // addToCart allow adding dishes to the cart
     public void addToCart(Dish dish) {
         dishes.add(dish);
     }
 
+    // addToCart allow adding drinks to the cart
     public void addToCart(Drink drink) {
         drinks.add(drink);
     }
 
+    // remove from cart allow removing dishes from the cart
     public void removeFromCart(Dish dish) {
         dishes.remove(dish);
     }
 
+    // remove from cart allow removing drinks from the cart
     public void removeFromCart(Drink drink) {
         drinks.remove(drink);
     }
