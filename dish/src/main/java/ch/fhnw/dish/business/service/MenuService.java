@@ -40,6 +40,11 @@ public class MenuService {
         throw new Exception("Invalid dish name ");
     }
 
+    public void deleteDish(Long id) {
+        Dish dish = findDishById(id);
+        dishRepository.delete(dish);
+    }
+    
     public Drink findDrinkById(Long id) {
         Drink drink = drinkRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Drink not found"));
         return drink;
@@ -57,6 +62,11 @@ public class MenuService {
             throw new Exception("Drink " + drink.getDrinkName() + " already exists");
         }
         throw new Exception("Invalid drink name ");
+    }
+
+    public void deleteDrink(Long id) {
+        Drink drink = findDrinkById(id);
+        drinkRepository.delete(drink);
     }
 
     public Dish updateDish(Long id, Dish updatedDish) {
