@@ -68,6 +68,20 @@ public class Drink {
 
     public void setDrinkPrice(double d) {
         this.drinkPrice = d;
+    }
+
+    public Object getDescription() {
+        return null;
+    }
+
+    public void setDescription(Object description) {
+    }
+
+    public Object getPrice() {
+        return null;
+    }
+
+    public void setPrice(Object price) {
     } 
 
 }
