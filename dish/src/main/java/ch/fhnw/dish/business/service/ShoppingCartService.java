@@ -47,6 +47,10 @@ public class ShoppingCartService {
         dishes.clear();
         drinks.clear();
     }
+
+    public List<Object> getCartItems() {
+        return null;
+    }
 }
 
 
