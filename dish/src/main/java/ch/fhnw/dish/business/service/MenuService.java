@@ -59,6 +59,24 @@ public class MenuService {
         throw new Exception("Invalid drink name ");
     }
 
+    public Dish updateDish(Long id, Dish updatedDish) {
+        Dish dish = findDishById(id);
+        dish.setDishName(updatedDish.getDishName());
+        dish.setDescription(updatedDish.getDescription());
+        dish.setPrice(updatedDish.getPrice());
+        // Update any other properties as needed
+        return dishRepository.save(dish);
+    }
+
+    public Drink updateDrink(Long id, Drink updatedDrink) {
+        Drink drink = findDrinkById(id);
+        drink.setDrinkName(updatedDrink.getDrinkName());
+        drink.setDescription(updatedDrink.getDescription());
+        drink.setPrice(updatedDrink.getPrice());
+        // Update any other properties as needed
+        return drinkRepository.save(drink);
+    }
+
     // Business Logic to get current offer according to the location of the user requesting the menu
     private String getCurrentOffer(String location) {
         String currentOffer = "No special offer";
