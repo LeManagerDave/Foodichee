@@ -12,4 +12,6 @@ import ch.fhnw.dish.data.domain.Drink;
 public interface DrinkRepository extends JpaRepository<Drink, Long> {
     Drink findByDrinkName(String drinkName);
     List<Drink> findAllByDrinkTypeContainsIgnoreCase(String type);
+
+    public void deleteByDrinkName(String drinkName);
 }
